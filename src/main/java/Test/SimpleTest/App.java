@@ -7,7 +7,7 @@ package Test.SimpleTest;
 public class App
 {
 
-    private final String message = "Szia Vilag!";
+    private final String message = "Hello World!";
 
     public App() {}
 
