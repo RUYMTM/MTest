@@ -5,13 +5,19 @@ pipeline {
         jdk 'java_home'
     }
     stages {
-        stage ('Build') {
+        stages {
+        stage('Build') {
             steps {
-                bat "mvn clean verify" 
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
             }
             post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                always {
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
